@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://l1a370j7fb1n"]
+
+[ext_resource type="Script" path="res://addons/godot-xr-tools/objects/pickable.gd" id="1_nmcok"]
+[ext_resource type="PackedScene" uid="uid://fciqmptxn3so" path="res://milk_box.glb" id="2_jykak"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4hefv"]
+radius = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ruagg"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_i5xul"]
+material = SubResource("StandardMaterial3D_ruagg")
+radius = 0.29
+height = 1.23
+
+[node name="PickableObject" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 196615
+freeze_mode = 1
+script = ExtResource("1_nmcok")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0522223, 1.08361, 0)
+shape = SubResource("CapsuleShape3D_4hefv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0562119, 0.70928, 0)
+mesh = SubResource("CapsuleMesh_i5xul")
+
+[node name="milk_box" parent="." instance=ExtResource("2_jykak")]
+transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, -0.0490133, 1.96017, -0.239694)

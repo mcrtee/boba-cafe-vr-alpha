@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cej53dt7j4np2"]
+
+[node name="XROrigin3D" type="XROrigin3D"]
+
+[node name="XRCamera3D" type="XRCamera3D" parent="."]
+
+[node name="Lefthand" type="XRController3D" parent="."]
+tracker = &"left_hand"
+
+[node name="Righthand" type="XRController3D" parent="."]
+tracker = &"right_hand"

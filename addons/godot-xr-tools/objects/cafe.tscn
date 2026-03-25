@@ -1,0 +1,80 @@
+[gd_scene load_steps=14 format=3 uid="uid://bj3sbke8h31sj"]
+
+[ext_resource type="Script" path="res://Node3D.gd" id="1_wnghs"]
+[ext_resource type="PackedScene" uid="uid://0q1vdnst7f5y" path="res://cafe01.glb" id="2_1fddo"]
+[ext_resource type="PackedScene" uid="uid://mjbh6jw8ooo" path="res://bobacup.tscn" id="3_c4alp"]
+[ext_resource type="PackedScene" uid="uid://l1a370j7fb1n" path="res://addons/godot-xr-tools/objects/milk pick.tscn" id="4_827ky"]
+[ext_resource type="PackedScene" uid="uid://ctggkesrojrri" path="res://addons/godot-xr-tools/objects/xr_origin.tscn" id="4_5443l"]
+[ext_resource type="AudioStream" uid="uid://2baqk6u3ia5s" path="res://Pufino - Fantasy (freetouse.com).mp3" id="6_k7kp2"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_abtbb"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_m0vgd"]
+sky_material = SubResource("ProceduralSkyMaterial_abtbb")
+
+[sub_resource type="Environment" id="Environment_b23yn"]
+background_mode = 2
+sky = SubResource("Sky_m0vgd")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bqh2l"]
+size = Vector3(60, 1, 50)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3fhgs"]
+size = Vector3(60, 1, 50)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ulxso"]
+size = Vector3(17, 1, 4.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rwdp0"]
+size = Vector3(17.095, 6.20551, 4.915)
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_wnghs")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_b23yn")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.860264, -0.472654, 0.191165, 0.100023, 0.211202, 0.972311, -0.499941, 0.855565, -0.134413, -0.997751, 7.21796, -2.73466)
+shadow_enabled = true
+
+[node name="cafe01" parent="." instance=ExtResource("2_1fddo")]
+transform = Transform3D(0.205, 0, 0, 0, 0.205, 0, 0, 0, 0.205, 0.040795, -1.19209e-07, 0.303565)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="cafe01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.95079, 1.19209e-07, -0.303565)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="cafe01/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7204, -0.907828, 0)
+shape = SubResource("BoxShape3D_bqh2l")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="cafe01/StaticBody3D/CollisionShape3D"]
+mesh = SubResource("BoxMesh_3fhgs")
+
+[node name="Table" type="MeshInstance3D" parent="cafe01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.0914, 5.48902, 0.52371)
+mesh = SubResource("BoxMesh_ulxso")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="cafe01/Table"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.95079, 1.19209e-07, -0.303565)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="cafe01/Table/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.98148, -2.68341, -0.259163)
+shape = SubResource("BoxShape3D_rwdp0")
+
+[node name="PickableObject" parent="cafe01" instance=ExtResource("3_c4alp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.8956, 5.99801, 0.123089)
+
+[node name="PickableObject2" parent="cafe01" instance=ExtResource("4_827ky")]
+transform = Transform3D(-0.389262, 0, 1.04057, 0, 1.111, 0, -1.04057, 0, -0.389262, 20.6858, 5.90836, 0.490426)
+
+[node name="XROrigin3D" parent="." instance=ExtResource("4_5443l")]
+transform = Transform3D(2.03, 0, 0, 0, 2.02461, 0.147825, 0, -0.147825, 2.02461, 3.27559, 1.88015, 1.95026)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.47124, 3.64818, 0)
+stream = ExtResource("6_k7kp2")

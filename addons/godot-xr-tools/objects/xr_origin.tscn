@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://ctggkesrojrri"]
+
+[ext_resource type="PackedScene" uid="uid://bq86r4yll8po" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_fullglove_low.tscn" id="1_8202o"]
+[ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="2_oumps"]
+[ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="3_fjpfi"]
+[ext_resource type="PackedScene" uid="uid://xqimcf20s2jp" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="4_xo370"]
+
+[node name="XROrigin3D" type="XROrigin3D"]
+
+[node name="XRCamera3D" type="XRCamera3D" parent="."]
+
+[node name="Lefthand" type="XRController3D" parent="."]
+tracker = &"left_hand"
+
+[node name="FunctionPickup" parent="Lefthand" instance=ExtResource("2_oumps")]
+
+[node name="LeftHand" parent="Lefthand" instance=ExtResource("1_8202o")]
+
+[node name="MovementDirect" parent="Lefthand/LeftHand" instance=ExtResource("3_fjpfi")]
+
+[node name="Righthand" type="XRController3D" parent="."]
+tracker = &"right_hand"
+
+[node name="MovementDirect" parent="Righthand" instance=ExtResource("3_fjpfi")]
+
+[node name="RightHand" parent="Righthand" instance=ExtResource("4_xo370")]
+
+[node name="FunctionPickup" parent="Righthand" instance=ExtResource("2_oumps")]

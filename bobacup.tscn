@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://mjbh6jw8ooo"]
+
+[ext_resource type="Script" path="res://addons/godot-xr-tools/objects/pickable.gd" id="1_vl3s7"]
+[ext_resource type="PackedScene" uid="uid://cma47r4f3syd0" path="res://bobacup.glb" id="2_tec7v"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4hefv"]
+radius = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ruagg"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_i5xul"]
+material = SubResource("StandardMaterial3D_ruagg")
+radius = 0.29
+height = 1.23
+
+[node name="PickableObject" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 196615
+freeze_mode = 1
+script = ExtResource("1_vl3s7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0522223, 1.08361, 0)
+shape = SubResource("CapsuleShape3D_4hefv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0562119, 0.70928, 0)
+mesh = SubResource("CapsuleMesh_i5xul")
+
+[node name="bobacup" parent="." instance=ExtResource("2_tec7v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.8943, -6.06759, -0.575265)
