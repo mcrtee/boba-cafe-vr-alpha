@@ -14,8 +14,3 @@ config/name="bobacafe"
 run/main_scene="res://addons/godot-xr-tools/objects/cafe.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
-
-[xr]
-
-openxr/enabled=true
-shaders/enabled=true
