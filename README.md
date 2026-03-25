@@ -17,12 +17,15 @@ The goal of this project is to create an immersive VR cafe where users can walk 
 * Setup OpenXR
 
 ## Screenshots
+<img width="1013" height="590" alt="Снимок экрана 2026-03-26 032615" src="https://github.com/user-attachments/assets/deeff607-71fe-475e-984e-410314038fb9" />
 
-(Add screenshots here)
+
 
 ## Demonstration Video
 
-(Add YouTube link here)
+https://drive.google.com/file/d/1HxvHX76MczRf1Jct0BF4E8omkN-DSgf6/view?usp=sharing
+
+
 
 ## Done
 
