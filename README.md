@@ -33,13 +33,14 @@ https://drive.google.com/file/d/1HxvHX76MczRf1Jct0BF4E8omkN-DSgf6/view?usp=shari
 * Basic environment
 * Player movement
 * Object interaction
+* Animations
+* Sound effects
 
 ## To Be Done
 
 * UI system
-* Sound effects
 * Drink ordering system
-* Animations
+
 
 ## Assets Used
 
